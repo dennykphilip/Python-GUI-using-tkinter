@@ -1,0 +1,641 @@
+from tkinter import *
+from tkinter import Button, StringVar, Widget, ttk
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+root = Tk()
+root.title("Student App")
+root.geometry("1200x1000")
+root.maxsize(1500,1000)
+root.configure(bg="Light Green")
+count = 0
+
+#Data Frame
+
+data_frame = Frame(root,bg="teal",relief=GROOVE)
+data_frame.place(x=530, y=100, width=650, height=200)
+
+
+#Database frame 
+
+main_frame = Frame(data_frame,bg="teal",bd=2,relief=GROOVE)
+main_frame.pack(ipadx=50, ipady=50,fill=BOTH,expand=True)
+
+y_scroll = Scrollbar(main_frame, orient=VERTICAL)
+x_scroll = Scrollbar(main_frame, orient=HORIZONTAL)
+
+
+#Treeview database
+
+student_table = ttk.Treeview(main_frame, columns=(
+  "First_Name", "Last_Name","Subjects","Marks","Average","Grade"
+), yscrollcommand=y_scroll.set, xscrollcommand=x_scroll.set)
+
+y_scroll.config(command=student_table.yview)
+x_scroll.config(command=student_table.xview)
+
+y_scroll.pack(side=RIGHT, fill=Y)
+x_scroll.pack(side=BOTTOM, fill=X)
+
+student_table.heading("First_Name", text="First_Name")
+student_table.heading("Last_Name", text="Last_Name")
+student_table.heading("Subjects", text="Subjects")
+student_table.heading("Marks", text="Marks")
+student_table.heading("Average", text="Average")
+student_table.heading("Grade", text="Grade")
+
+
+student_table["show"] = "headings"
+
+student_table.column("First_Name", width=100)
+student_table.column("Last_Name", width=100)
+student_table.column("Subjects", width=25)
+student_table.column("Marks", width=100)
+student_table.column("Average", width=100)
+student_table.column("Grade", width=25)
+
+student_table.pack(fill=BOTH, expand=True)
+
+   
+
+def enter_click():
+    global txt
+    global counttt
+    txt = int(e3.get())
+    list1.append(txt)
+    counttt = 0
+    for ele in range(0, len(list1)):
+        counttt = counttt + list1[ele]
+    global e4
+    global e5
+    global e6
+    global e7 
+    global label11
+    global label111
+    global label112
+    global label113
+    global Button12
+    global Button13
+    global Button14
+    
+    if txt==1:
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)  
+        
+    elif txt==2:
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)
+    
+        label111 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label111.place(x=50, y=400)
+        
+        e5 = Entry(root)
+        e5.place(x=300, y=400)
+                
+    elif txt==3: 
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)
+    
+        label111 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label111.place(x=50, y=400)
+        
+        e5 = Entry(root)
+        e5.place(x=300, y=400)
+           
+        label112 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label112.place(x=50, y=425)
+            
+        e6 = Entry(root)
+        e6.place(x=300, y=425)
+        
+    elif txt==4: 
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)
+    
+        label111 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label111.place(x=50, y=400)
+        
+        e5 = Entry(root)
+        e5.place(x=300, y=400)
+           
+        label112 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label112.place(x=50, y=425)
+            
+        e6 = Entry(root)
+        e6.place(x=300, y=425)
+        
+        label113 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label113.place(x=50, y=450)
+            
+        e7 = Entry(root)
+        e7.place(x=300, y=450)
+
+    elif txt==5: 
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)
+    
+        label111 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label111.place(x=50, y=400)
+        
+        e5 = Entry(root)
+        e5.place(x=300, y=400)
+           
+        label112 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label112.place(x=50, y=425)
+            
+        e6 = Entry(root)
+        e6.place(x=300, y=425)
+        
+        label113 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label113.place(x=50, y=450)
+            
+        e7 = Entry(root)
+        e7.place(x=300, y=450)
+        
+        label114 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label114.place(x=50, y=475)
+            
+        e8 = Entry(root)
+        e8.place(x=300, y=475)
+        
+    else: 
+        label11 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label11.place(x=50, y=375)
+        
+        e4 = Entry(root)
+        e4.place(x=300, y=375)
+    
+        label111 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label111.place(x=50, y=400)
+        
+        e5 = Entry(root)
+        e5.place(x=300, y=400)
+           
+        label112 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label112.place(x=50, y=425)
+            
+        e6 = Entry(root)
+        e6.place(x=300, y=425)
+        
+        label113 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label113.place(x=50, y=450)
+            
+        e7 = Entry(root)
+        e7.place(x=300, y=450)
+        
+        label114 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label114.place(x=50, y=475)
+            
+        e8 = Entry(root)
+        e8.place(x=300, y=475)
+        
+        label115 = Label(root, text='Enter Score', font=('Times', 14), bg="Light Green", fg="Black")
+        label115.place(x=50, y=500)
+            
+        e9 = Entry(root)
+        e9.place(x=300, y=500)
+        
+   
+    Button12 = Button(root, text = "Total Marks", font=('Times', 14), bg="Gray", fg="Black", command = Total_Marks)
+    Button12.place(x=500, y=382)
+    
+    Button13 = Button(root, text = "Average", font=('Times', 14), bg="Gray", fg="Black", command = Average)
+    Button13.place(x=667, y=382)
+    
+    Button14 = Button(root, text = "Grade", font=('Times', 14), bg="Gray", fg="Black", command = grade)
+    Button14.place(x=800, y=382)
+
+       
+
+def Total_Marks():
+    global a
+    global b
+    global c
+    global d
+    global e
+    global f 
+    global tot
+    global label15
+    global marks
+    marks = 0
+    if txt==1:
+        a = int(e4.get())
+        mark.append(a)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+    elif txt==2:
+        a = int(e4.get())
+        mark.append(a)
+        b = int(e5.get())
+        mark.append(b)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a+b
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+    elif txt==3:
+        a = int(e4.get())
+        mark.append(a)
+        b = int(e5.get())
+        mark.append(b)
+        c = int(e6.get())
+        mark.append(c)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a+b+c
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+    elif txt==4:
+        a = int(e4.get())
+        mark.append(a)
+        b = int(e5.get())
+        mark.append(b)
+        c = int(e6.get())
+        mark.append(c)
+        d = int(e7.get())
+        mark.append(d)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a+b+c+d
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+    elif txt==5:
+        a = int(e4.get())
+        mark.append(a)
+        b = int(e5.get())
+        mark.append(b)
+        c = int(e6.get())
+        mark.append(c)
+        d = int(e5.get())
+        mark.append(d)
+        e = int(e6.get())
+        mark.append(e)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a+b+c+d+e
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+    else:
+        a = int(e4.get())
+        mark.append(a)
+        b = int(e5.get())
+        mark.append(b)
+        c = int(e6.get())
+        mark.append(c)
+        d = int(e7.get())
+        mark.append(d)
+        e = int(e6.get())
+        mark.append(e)
+        f = int(e7.get())
+        mark.append(f)
+        for ele in range(0, len(mark)):
+            marks = marks + mark[ele]
+        tot = a+b+c+d+e+f
+        label15 = Label(root, text=tot, font=('Times', 14), bg="Light Green", fg="Black")
+        label15.place(x=535, y=425)
+
+def Average():
+    global avg
+    global label16
+    if txt==1:
+        avg = tot/1
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+    elif txt==2:
+        avg = tot/2
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+    elif txt==3:
+        avg = tot/3
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+    elif txt==4:
+        avg = tot/4
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+    elif txt==5:
+        avg = tot/5
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+    else:
+        avg = tot/6
+        label16 = Label(root, text=avg, font=('Times', 14), bg="Light Green", fg="Black")
+        label16.place(x=680, y=425)
+
+def grade():
+    global label12
+    global Button15
+    global Button16
+    global label17
+    global label18
+    global Button18
+    global Button19
+    global grd
+    
+    if avg>=90:
+        grd = "A"
+        label17 = Label(root, text="A", font=('Times', 14), bg="Light Green", fg="Black")
+        label17.place(x=820, y=425)
+        grades.append("A")
+    elif avg<90 and avg>=80:   
+        grd = "B"
+        label17 = Label(root, text="B", font=('Times', 14), bg="Light Green", fg="Black")
+        label17.place(x=820, y=425)
+        grades.append("B")
+    elif avg<80 and avg>=70:
+        grd = "c"
+        label17 = Label(root, text="C", font=('Times', 14), bg="Light Green", fg="Black")
+        label17.place(x=820, y=425)
+        grades.append("C")
+    elif avg<70 and avg>=60:
+        grd = "D"
+        label17 = Label(root, text="D", font=('Times', 14), bg="Light Green", fg="Black")
+        label17.place(x=820, y=425)
+        grades.append("D")
+    else:
+        grd = "F"
+        label17 = Label(root, text="F", font=('Times', 14), bg="Light Green", fg="Black")
+        label17.place(x=820, y=425)
+        grades.append("F")
+
+        
+    label18 = Label(root, text="Kindly save the data", font=('Times', 14), bg="Light Green", fg="Black")
+    label18.place(x=50, y=548)
+    
+    Button18 = Button(root, text = "Save", font=('Times', 14), bg="Gray", fg="Black", command=lambda: save())   
+    Button18.place(x=500, y=540)
+    
+def save():    
+    global label12
+    global Button15
+    global Button16
+    
+    Button18.destroy()
+    label18.destroy()
+    
+    label12 = Label(root, text="Do you want to details of new Student?", font=('Times', 14), bg="Light Green", fg="Black")
+    label12.place(x=50, y=548)
+    
+    Button15 = Button(root, text = "Yes", font=('Times', 14), bg="Gray", fg="Black", command = yes)
+    Button15.place(x=500, y=540)
+        
+    Button16 = Button(root, text = "No", font=('Times', 14), bg="Gray", fg="Black", command = no)
+    Button16.place(x=667, y=540) 
+    
+    global count
+    student_table.tag_configure("oddrow", background="white")
+    student_table.tag_configure("evenrow", background="#00AEAE")
+    
+
+    if count%2==0:
+        student_table.insert(parent="", index="end", iid=count, text="", values=(e1.get(),e2.get(),e3.get(),tot,avg,grd),tags=("evenrow"))
+    else:
+        student_table.insert(parent="", index="end", iid=count, text="", values=(e1.get(),e2.get(),e3.get(),tot,avg,grd),tags=("oddrow"))
+    count+=1  
+
+
+
+    
+def yes():
+    e1.delete(0, END)
+    e2.delete(0, END)
+    e3.delete(0, END)
+    label15.destroy()
+    label16.destroy()
+    label17.destroy()
+    label12.destroy()
+    Button12.destroy()
+    Button13.destroy()
+    Button14.destroy()
+    Button15.destroy()
+    Button16.destroy()
+    if txt==1:
+        label11.destroy()
+        e4.destroy()
+    elif txt==2:
+        label11.destroy()
+        label111.destroy()
+        e4.destroy()
+        e5.destroy()
+    elif txt==3:
+        label11.destroy()
+        label111.destroy()
+        label112.destroy()
+        e4.destroy()
+        e5.destroy()
+        e6.destroy()
+    elif txt==4:
+        label11.destroy()
+        label111.destroy()
+        label112.destroy()
+        label113.destroy()
+        e4.destroy()
+        e5.destroy()
+        e6.destroy()
+        e7.destroy()
+    elif txt==5:
+        label11.destroy()
+        label111.destroy()
+        label112.destroy()
+        e4.destroy()
+        e5.destroy()
+        e6.destroy()
+        e7.destroy()
+        e8.destroy()
+    else:
+        label11.destroy()
+        label111.destroy()
+        label112.destroy()
+        label113.destroy()
+        e4.destroy()
+        e5.destroy()
+        e6.destroy()
+        e7.destroy()
+        e8.destroy()
+        e9.destroy()
+        
+def no():
+    label12.destroy()
+    Button15.destroy()
+    Button16.destroy()
+    
+    label13 = Label(root, text="If No,", font=('Times', 14), bg="Light Green", fg="Black")
+    label13.place(x=50, y=548)
+    
+    Button17 = Button(root, text = "Show Result", font=('Times', 14), bg="Gray", fg="Black", command = show_result)   
+    Button17.place(x=500, y=540)
+    
+def show_result():
+    Button27 = Button(root, text = "Class Average", font=('Times', 14), bg="Gray", fg="Black", command = class_avg)   
+    Button27.place(x=50, y=590)
+    
+    Button28 = Button(root, text = "Grade", font=('Times', 14), bg="Gray", fg="Black", command = no_grade)   
+    Button28.place(x=500, y=590)
+    
+    Button29 = Button(root, text = "Graph", font=('Times', 14), bg="Gray", fg="Black", command = graph)   
+    Button29.place(x=800, y=590)
+    
+    Button273 = Button(root, text = "Overall Marks", font=('Times', 14), bg="Gray", fg="Black", command = final_mark)   
+    Button273.place(x=50, y=640)
+    
+    Button283 = Button(root, text = "Total Subj.", font=('Times', 14), bg="Gray", fg="Black", command = total_sub)   
+    Button283.place(x=50, y=690)
+    
+
+def class_avg():
+    global whole
+    whole = marks/counttt
+    
+    label23 = Label(root, text=whole, font=('Times', 14), bg="Light Green", fg="Black")
+    label23.place(x=300, y=590) 
+
+    
+def final_mark():
+    label233 = Label(root, text=marks, font=('Times', 14), bg="Light Green", fg="Black")
+    label233.place(x=300, y=640) 
+
+def total_sub():
+    label233 = Label(root, text=counttt, font=('Times', 14), bg="Light Green", fg="Black")
+    label233.place(x=300, y=690) 
+    
+def no_grade():
+    global A1
+    global B1
+    global C1
+    global D1
+    global F1
+    
+    A1=grades.count("A")
+    B1=grades.count("B")  
+    C1=grades.count("C")  
+    D1=grades.count("D")  
+    F1=grades.count("F")  
+    
+    label41 = Label(root, text="No. of A's - ", font=('Times', 14), bg="Light Green", fg="Black")
+    label41.place(x=500, y=640) 
+    label42 = Label(root, text="No. of B's - ", font=('Times', 14), bg="Light Green", fg="Black")
+    label42.place(x=500, y=665)
+    label43 = Label(root, text="No. of C's - ", font=('Times', 14), bg="Light Green", fg="Black")
+    label43.place(x=500, y=690)
+    label44 = Label(root, text="No. of D's - ", font=('Times', 14), bg="Light Green", fg="Black")
+    label44.place(x=500, y=715)
+    label45 = Label(root, text="No. of F's - ", font=('Times', 14), bg="Light Green", fg="Black")
+    label45.place(x=500, y=740)
+    
+    label46 = Label(root, text=A1, font=('Times', 14), bg="Light Green", fg="Black")
+    label46.place(x=595, y=640)
+    label47 = Label(root, text=B1, font=('Times', 14), bg="Light Green", fg="Black")
+    label47.place(x=595, y=665)
+    label48 = Label(root, text=C1, font=('Times', 14), bg="Light Green", fg="Black")
+    label48.place(x=595, y=690)
+    label49 = Label(root, text=D1, font=('Times', 14), bg="Light Green", fg="Black")
+    label49.place(x=595, y=715)
+    label50 = Label(root, text=F1, font=('Times', 14), bg="Light Green", fg="Black")
+    label50.place(x=595, y=740)
+
+def graph():
+    data = {'Grade': ['A', 'B', 'C', 'D', 'F'], 'Number_of_Grade': [A1, B1, C1, D1, F1]}
+    df = pd.DataFrame(data)
+
+
+    fig = plt.Figure(figsize=(4, 4), dpi=70)
+    ax = fig.add_subplot(111)
+    line = FigureCanvasTkAgg(fig, root)
+    line.get_tk_widget().pack(padx=10, pady=10, side=RIGHT)
+    df = df[['Grade', 'Number_of_Grade']].groupby('Grade').sum()
+    df.plot(kind='line', ax=ax, color='r', marker='o', fontsize=10)
+    ax.set_title('Grade Vs. Number of Grade')
+
+
+    
+title_label = Label(root,text="Student Management System",
+  font=("Arial", 20, "bold"),padx=15,pady=15,border=0,relief=GROOVE,bg="teal",foreground="white")
+title_label.pack(side=TOP, fill=X)
+
+    
+#label = Label(root, text="Welcome All to Denny App", font=('Times', 36), bg="Light Green", fg="Black")
+#label.place(x=0, y=0)
+
+list1 = []
+mark = []
+grades = []
+fname = []
+sname = []
+num = []
+
+
+label1 = Label(root, text='First Name', font=('Times', 14), bg="Light Green", fg="Black")
+label1.place(x=50, y=300)
+
+e1 = Entry(root)
+e1.place(x=300, y=302)
+fname.append(e1)
+
+label2 = Label(root, text='Last Name', font=('Times', 14), bg="Light Green", fg="Black")
+label2.place(x=50, y=325)
+
+e2 = Entry(root)
+e2.place(x=300, y=327)
+sname.append(e2)
+
+label3 = Label(root, text='How many subjects?', font=('Times', 14), bg="Light Green", fg="Black")
+label3.place(x=50, y=350)
+
+e3 = Entry(root)
+e3.place(x=300, y=352)
+num.append(e3)
+
+Button1 = Button(root, text = "Enter", font=('Times', 14), bg="Gray", fg="Black", command=lambda: enter_click())
+Button1.place(x=500, y=333)
+
+    
+label101 = Label(root, text='Step 1: Fill First Name, Last Name and How many Subjects', font=('Times', 14), bg="Light Green", fg="Black")
+label101.place(x=50, y=70)
+
+label102 = Label(root, text='Step 2: Press Enter', font=('Times', 14), bg="Light Green", fg="Black")
+label102.place(x=50, y=90)
+
+label103 = Label(root, text='Step 3: Fill Scores', font=('Times', 14), bg="Light Green", fg="Black")
+label103.place(x=50, y=110)
+
+label104 = Label(root, text='Step 4: Press Total Marks, Average and Grade', font=('Times', 14), bg="Light Green", fg="Black")
+label104.place(x=50, y=130)
+
+label105 = Label(root, text='Step 5: Press Save to save the data', font=('Times', 14), bg="Light Green", fg="Black")
+label105.place(x=50, y=150)
+
+label106 = Label(root, text='Step 6: Press Yes to do for other students else press No', font=('Times', 14), bg="Light Green", fg="Black")
+label106.place(x=50, y=170)
+
+label107 = Label(root, text='Step 7: Repeat from Step 1 - Step 5', font=('Times', 14), bg="Light Green", fg="Black")
+label107.place(x=50, y=190)
+
+label108 = Label(root, text='Step 8: Press No to stop', font=('Times', 14), bg="Light Green", fg="Black")
+label108.place(x=50, y=210)
+
+label109 = Label(root, text='Step 9: Press Show Result to view data', font=('Times', 14), bg="Light Green", fg="Black")
+label109.place(x=50, y=230)
+
+label110 = Label(root, text='Step 10: Press Class Average, Grades and Graph to data', font=('Times', 14), bg="Light Green", fg="Black")
+label110.place(x=50, y=250)
+
+root.mainloop()
